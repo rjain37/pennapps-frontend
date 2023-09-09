@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CSVDataTable from "/components/CSVDataTable.tsx";
+import Link from 'next/link';
 
 const App = () => {
   const [csvData, setCsvData] = useState([]);
@@ -47,6 +48,16 @@ const App = () => {
       console.log(message);
     }
   };
+
+  function Home() {
+    return (
+      <div>
+        <h1>AnalyzeAI</h1>
+        <p>Welcome to AnalyzeAI.</p>
+        <Link href="/about">Go to About</Link>
+      </div>
+    ); // PLACEHOLDER - repeat for other pages!
+  }
 
   return (
 <div style={{ 
