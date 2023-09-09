@@ -5,6 +5,7 @@ import Link from 'next/link';
 const App = () => {
   const [csvData, setCsvData] = useState([]);
   const [message, setMessage] = useState(""); // Track user's input message
+  var messageList = [];
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -43,9 +44,10 @@ const App = () => {
 
   const handleSendMessage = () => {
     if (message.trim() !== "") {
-      // Handle sending the message here (you can use state or another method)
-      // For now, let's just log it to the console
-      console.log(message);
+      messageList.push(message);
+      for (let i = 0; i < messageList.length; i++) {
+        console.log(messageList[i]);
+      }
     }
   };
 
