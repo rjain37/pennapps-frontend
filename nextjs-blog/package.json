@@ -6,9 +6,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@usecsv/react": "^0.4.0",
     "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-csv-to-table": "^0.0.4",
+    "react-dom": "18.2.0",
+    "uuid4": "^2.0.3"
   },
   "engines": {
     "node": ">=18"
