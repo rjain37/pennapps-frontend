@@ -45,13 +45,12 @@ const App = () => {
       // Handle sending the message here (you can use state or another method)
       // For now, let's just log it to the console
       console.log(message);
-      setMessage(""); // Clear the message input
     }
   };
 
   return (
 <div style={{ 
-  maxWidth: '600px', 
+  maxWidth: '1200px', 
   margin: '0 auto', 
   padding: '20px', 
   backgroundColor: '#3CB043', 
@@ -59,53 +58,68 @@ const App = () => {
   borderRadius: '10px',
   textAlign: 'center',
   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-  }}>
+}}>
   <h1> Title </h1>
   <div style={{ marginBottom: '15px' }}>
-    <input 
-      type="file" 
-      onChange={handleFileChange} 
-      accept=".csv" 
-      style={{ 
+    <label
+      htmlFor="file-upload"
+      style={{
+        display: 'block',
         padding: '10px',
+        backgroundColor: '#007bff',
+        color: 'white',
         border: '1px solid #ccc',
         borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+      }}
+    >
+      Choose File
+    </label>
+    <input 
+      type="file" 
+      id="file-upload"
+      onChange={handleFileChange} 
+      accept=".csv"
+      style={{
+        display: 'none', // Hide the actual file input
       }}
     />
   </div>
   <CSVDataTable data={csvData} />
 
-  <input
-    type="text"
-    placeholder="Enter your query..."
-    value={message}
-    onChange={(e) => setMessage(e.target.value)}
-    style={{
-      padding: '10px',
-      border: '1px solid #ccc',
-      borderRadius: '5px',
-      fontSize: '16px',
-      width: '90%',
-      marginBottom: '10px',
-      marginTop: '20px',
-    }}
-  />
-  <button
-    onClick={handleSendMessage}
-    style={{
-      padding: '10px 20px',
-      backgroundColor: '#007bff',
-      color: 'white',
-      border: 'none',
-      borderRadius: '5px',
-      cursor: 'pointer',
-      fontSize: '16px',
-      transition: 'background-color 0.3s',
-    }}
-  >
-    Send!
-  </button>
+<input
+  type="text"
+  placeholder="Enter your query..."
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+  style={{
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    fontSize: '16px',
+    width: '90%',
+    marginBottom: '10px',
+    marginTop: '20px',
+  }}
+/>
+<button
+  onClick={handleSendMessage}
+  style={{
+    padding: '10px 20px',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    transition: 'background-color 0.3s',
+  }}
+>
+  Send!
+</button>
 </div>
+
   );
 };
 
