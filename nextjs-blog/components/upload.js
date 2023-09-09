@@ -1,4 +1,5 @@
 import formidable from 'formidable';
+import csv from 'csv-parser';
 
 export const config = {
   api: {
@@ -17,11 +18,22 @@ export default async function handler(req, res) {
 
       const uploadedFile = files.file;
 
-      //  process file here
-      
+      if (!uploadedFile) {
+        return res.status(400).json({ error: 'No file uploaded' });
+      }
 
+      const csvData = [];
 
-      res.status(200).json({ message: 'File uploaded successfully' });
+      // read/parse the uploaded .csv file
+      uploadedFile
+        .pipe(csv())
+        .on('data', (row) => {
+          csvData.push(row);
+        })
+        .on('end', () => {
+          // parsed .csv data sent as JSON response
+          res.status(200).json(csvData);
+        });
     });
   } else {
     res.status(405).json({ error: 'Method not allowed' });
