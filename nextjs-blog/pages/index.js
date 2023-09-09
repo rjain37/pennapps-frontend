@@ -3,6 +3,7 @@ import CSVDataTable from "/components/CSVDataTable.tsx";
 
 const App = () => {
   const [csvData, setCsvData] = useState([]);
+  const [message, setMessage] = useState(""); // Track user's input message
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -39,12 +40,30 @@ const App = () => {
     setCsvData(parsedData);
   };
 
+  const handleSendMessage = () => {
+    if (message.trim() !== "") {
+      // Handle sending the message here (you can use state or another method)
+      // For now, let's just log it to the console
+      console.log("User said:", message);
+      setMessage(""); // Clear the message input
+    }
+  };
+
   return (
     <div>
-      <div style={{marginBottom:'15px'}}>
+      <div style={{ marginBottom: "15px" }}>
         <input type="file" onChange={handleFileChange} accept=".csv" />
       </div>
       <CSVDataTable data={csvData} />
+
+      <input
+        type="text"
+        placeholder="Enter your text..."
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button onClick={handleSendMessage}>Send</button>
+      <div id="output"></div>
     </div>
   );
 };
