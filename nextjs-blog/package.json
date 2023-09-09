@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@usecsv/react": "^0.4.0",
-    "next": "latest",
+    "next": "^13.4.19",
     "react": "18.2.0",
     "react-csv-to-table": "^0.0.4",
     "react-dom": "18.2.0",
