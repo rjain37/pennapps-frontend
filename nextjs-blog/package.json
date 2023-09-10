@@ -26,7 +26,7 @@
   "name": "nextjs-blog",
   "description": "This is a starter template for [Learn Next.js](https://nextjs.org/learn).",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "_app.js",
   "keywords": [],
   "author": "",
   "license": "ISC"

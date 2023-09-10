@@ -25,3 +25,18 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.personMessage {
+	background-color: #F0F0F0;
+	padding: 8px;
+	margin: 4px;
+	justify-content: right;
+  }
+
+.botMessage {
+	background-color: #F0F0F0;
+	padding: 8px;
+	margin: 4px;
+	justify-content: left;
+}
+  
