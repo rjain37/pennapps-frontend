@@ -18,8 +18,10 @@ const App = () => {
 
 	const [csvData, setCsvData] = useState([]);
 	const [messages, setMessages] = useState([{ id: 1, text: 'Hello! Welcome to the world of this personal, smart, and powerful data analysis tool!', bot: true }]);
-    const [showImages, setShowImages] = useState(false);
+	const [analysisAnswer, setAnalysisAnswer] = useState("");
+	const [showImages, setShowImages] = useState(false);
 	const [userId, setUserId] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		fetch(`${BACKEND_URL}/`)
@@ -54,32 +56,49 @@ const App = () => {
 			// Get the user_id from the cookie
 			const currentUserId = Cookies.get('user_id');
 
+			setIsLoading(true);  // Start loading before the upload
+
 			try {
 				const response = await fetch(`${BACKEND_URL}/upload/csv/`, {
 					method: 'POST',
 					body: formData,
 					headers: {
 						'user-id': currentUserId
-						// If you have any additional headers, like authentication tokens, add them here
 					},
 				});
 
-				if (!response.ok) {
-					const errorData = await response.json();
-					console.error('Server response:', errorData);
-					throw new Error(`Server error: ${response.statusText}`);
+				// After successfully uploading the file
+				if (response.ok) {
+					// Get the analysis
+					try {
+						const fileId = await response.json();
+						console.log("File uploaded with UUID:", fileId);
+
+						// Make the new API call
+						const analysisResponse = await fetch(`${BACKEND_URL}/analyze/${fileId}`, {
+							headers: {
+								'user-id': userId
+							},
+						});
+
+						if (!analysisResponse.ok) {
+							throw new Error(`Error getting analysis: ${analysisResponse.statusText}`);
+						}
+
+						const analysisData = await analysisResponse.json();
+						setAnalysisAnswer(analysisData.answer);
+
+						setShowImages(true);
+
+						console.log("Received encoded images:", analysisData.files);
+					} catch (error) {
+						console.error("Error getting file analysis:", error);
+					}
 				}
-
-				const data = await response.json();
-				console.log("File uploaded with UUID:", data);
-
-				// Store the file_id in a cookie
-				Cookies.set('file_id', data, { expires: 30, sameSite: 'None', secure: true });
-
-                setShowImages(true);
-
-            } catch (error) {
-				console.error("Error uploading the file:", error);
+			} catch (error) {
+				console.error("Error uploading file:", error);
+			} finally {
+				setIsLoading(false);  // Stop loading after the analysis is complete or an error occurs
 			}
 		}
 	};
@@ -207,14 +226,21 @@ const App = () => {
 		  />
 		</div>
 	  </div></center>
-
-	  <div id = "imageAnalysis" className={classname}>
-			<h2>Machine Learning Analysis</h2>
-			<p>Here are some of the most important features of your data:</p>
-			<Image src={img1} alt="iris1" width="800" height="600" /><br></br>
-			<Image src={img2} alt="iris2" width="800" height="600" /><br></br>
-			<Image src={img4} alt="iris4" width="800" height="600" /><br></br>
-			<Image src={img5} alt="iris5" width="800" height="600" /><br></br>
+	  <div id="imageAnalysis">
+		  <h2>Machine Learning Analysis</h2>
+		  {isLoading ? (
+			  <p>Loading...</p>
+		  ) : showImages ? (
+			  <>
+				  <p>{analysisAnswer}</p>
+				  <Image src={img1} alt="iris1" width="800" height="600" /><br></br>
+				  <Image src={img2} alt="iris2" width="800" height="600" /><br></br>
+				  <Image src={img4} alt="iris4" width="800" height="600" /><br></br>
+				  <Image src={img5} alt="iris5" width="800" height="600" /><br></br>
+			  </>
+		  ) : (
+			  <p>Upload file to learn more</p>
+		  )}
 	  </div>
   </div>
 
