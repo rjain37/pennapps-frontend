@@ -3,9 +3,6 @@ import React, { useState } from "react";
 import CSVDataTable from "/components/CSVDataTable.tsx";
 import Link from 'next/link';
 import '../styles/globals.css';
-import Image from 'next/image'
-//import DataLogo.png from /public
-import Logo from '../images/DataLogo.png';
 
 const App = () => {
 	const [csvData, setCsvData] = useState([]);
@@ -78,7 +75,7 @@ const App = () => {
 	fontFamily: "'Montserrat', sans-serif",
 	justifyContent: 'center'
   }}>
-	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome to <Image src = {Logo} height ={150} width = {200}/></h1>
+	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome to DataDaddy</h1>
 	<div style={{ marginBottom: '15px' }}>
 	  <label
 		htmlFor="file-upload"
