@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import CSVDataTable from "/components/CSVDataTable.tsx";
-import Link from 'next/link';
 import '../styles/globals.css';
 
 const App = () => {
