@@ -9,7 +9,7 @@ import CSVDataTable from "/components/CSVDataTable.tsx";
 import '../styles/globals.css';
 
 const App = () => {
-	const BACKEND_URL = "http://10.251.158.187:8000/";
+	const BACKEND_URL = "http://10.251.158.187:8000";
 
 	const [csvData, setCsvData] = useState([]);
 	const [messages, setMessages] = useState([{ id: 1, text: 'Hello! Welcome to the world of this personal, smart, and powerful data analysis tool!', bot: true }]);
@@ -39,19 +39,42 @@ const App = () => {
 		setUserId(currentUserId);
 	}, []); // empty array as second argument so it only runs once
 
-	const handleFileChange = (event) => {
-	  const file = event.target.files[0];
+	const handleFileChange = async (event) => {
+		const file = event.target.files[0];
 
-	  if (file) {
-		const reader = new FileReader();
+		if (file) {
+			const formData = new FormData();
+			formData.append('file', file);
 
-		reader.onload = (e) => {
-		  const csvText = e.target.result;
-		  parseCSV(csvText);
-		};
+			// Get the user_id from the cookie
+			const currentUserId = Cookies.get('user_id');
 
-		reader.readAsText(file);
-	  }
+			try {
+				const response = await fetch(`${BACKEND_URL}/upload/csv/`, {
+					method: 'POST',
+					body: formData,
+					headers: {
+						'user-id': currentUserId
+						// If you have any additional headers, like authentication tokens, add them here
+					},
+				});
+
+				if (!response.ok) {
+					const errorData = await response.json();
+					console.error('Server response:', errorData);
+					throw new Error(`Server error: ${response.statusText}`);
+				}
+
+				const data = await response.json();
+				console.log("File uploaded with UUID:", data);
+
+				// Store the file_id in a cookie
+				Cookies.set('file_id', data, { expires: 30, sameSite: 'None', secure: true });
+
+			} catch (error) {
+				console.error("Error uploading the file:", error);
+			}
+		}
 	};
 
 	const parseCSV = (csvText) => {
@@ -74,25 +97,43 @@ const App = () => {
 	  setCsvData(parsedData);
 	};
 
-	const handleSendMessage = (text) => {
-	  if (text.trim() !== "") {
-		const newMessage = { id: messages.length + 1, text, bot: false };
-		setMessages([...messages, newMessage]);
-		for (let i = 0; i < messages.length; i++) {
-		  console.log(messages[i]);
+	const handleSendMessage = async (text) => {
+		if (text.trim() !== "") {
+			const newMessage = { id: messages.length + 1, text, bot: false };
+			setMessages(prevMessages => [...prevMessages, newMessage]);
+
+			// Get the user_id and file_id from cookies
+			const currentUserId = Cookies.get('user_id');
+			const fileId = Cookies.get('file_id');
+
+			try {
+				const response = await fetch(`${BACKEND_URL}/chat/${fileId}`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'user-id': currentUserId
+					},
+					body: JSON.stringify(text)
+				});
+
+				if (!response.ok) {
+					const errorData = await response.json();
+					console.error('Server response:', errorData);
+					throw new Error(`Server error: ${response.statusText}`);
+				}
+
+				const data = await response.json();
+				handleBotMessage(data.answer);
+			} catch (error) {
+				console.error("Error getting response from chatbot:", error);
+			}
 		}
-	  }
 	};
 
 	const handleBotMessage = (text) => {
-	  if (text.trim() !== "") {
 		const newMessage = { id: messages.length + 1, text, bot: true };
 		setMessages([...messages, newMessage]);
-		for (let i = 0; i < messages.length; i++) {
-		  console.log(messages[i]);
-		}
-	  }
-	}
+	};
 
 	return (
   <div style={{
