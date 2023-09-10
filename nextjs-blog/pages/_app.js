@@ -6,7 +6,7 @@ import '../styles/globals.css';
 
 const App = () => {
 	const [csvData, setCsvData] = useState([]);
-	const [messages, setMessages] = useState([{ id: 1, text: 'Hello!', bot: true }]);
+	const [messages, setMessages] = useState([{ id: 1, text: 'Hello! Welcome to the world of this personal, smart, and powerful data analysis tool!', bot: true }]);
   
 	const handleFileChange = (event) => {
 	  const file = event.target.files[0];

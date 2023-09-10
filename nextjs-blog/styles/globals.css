@@ -76,7 +76,7 @@ input{
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  width: 1200px;
   max-width: 100%;
 
 }
@@ -95,4 +95,9 @@ input{
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.messages {
+  width: 97.5%;
+  overflow: auto;
 }
