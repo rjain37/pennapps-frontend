@@ -2,12 +2,19 @@
 import React, { useState } from "react";
 import CSVDataTable from "/components/CSVDataTable.tsx";
 import '../styles/globals.css';
+import img1 from '../images/iris1.png';
+import img2 from '../images/iris2.png';
+import img4 from '../images/iris4.png';
+import img5 from '../images/iris5.png';
+import Image from 'next/image';
 
 const App = () => {
 	const [csvData, setCsvData] = useState([]);
 	const [messages, setMessages] = useState([{ id: 1, text: 'Hello! Welcome to the world of this personal, smart, and powerful data analysis tool!', bot: true }]);
+	const [showImages, setShowImages] = useState(false);
   
 	const handleFileChange = (event) => {
+		setShowImages(true);
 	  const file = event.target.files[0];
   
 	  if (file) {
@@ -61,6 +68,7 @@ const App = () => {
 		}
 	  }
 	}
+	var classname = showImages ? '' : 'hidden';
   
 	return (
   <div style={{ 
@@ -125,6 +133,15 @@ const App = () => {
 		  />
 		</div>
 	  </div></center>
+	  
+	  <div id = "imageAnalysis" className={classname}>
+			<h2>Machine Learning Analysis</h2>
+			<p>Here are some of the most important features of your data:</p>
+			<Image src={img1} alt="iris1" width="800" height="600" /><br></br>
+			<Image src={img2} alt="iris2" width="800" height="600" /><br></br>
+			<Image src={img4} alt="iris4" width="800" height="600" /><br></br>
+			<Image src={img5} alt="iris5" width="800" height="600" /><br></br>
+	  </div>
   </div>
   
 	);
