@@ -63,16 +63,6 @@ const App = () => {
 	  }
 	}
   
-	function Home() {
-	  return (
-		<div>
-		  <h1>AnalyzeAI</h1>
-		  <p>Welcome to AnalyzeAI.</p>
-		  <Link href="/about">Go to About</Link>
-		</div>
-	  ); // PLACEHOLDER - repeat for other pages!
-	}
-  
 	return (
   <div style={{ 
 	maxWidth: '1200px', 
@@ -84,14 +74,14 @@ const App = () => {
 	textAlign: 'center',
 	fontFamily: "'Montserrat', sans-serif"
   }}>
-	<h1> Title </h1>
+	<h1> Welcome </h1>
 	<div style={{ marginBottom: '15px' }}>
 	  <label
 		htmlFor="file-upload"
 		style={{
 		  display: 'block',
 		  padding: '10px',
-		  backgroundColor: '#007bff',
+		  backgroundColor: '#0074e4',
 		  color: 'white',
 		  border: '1px solid #ccc',
 		  borderRadius: '5px',
