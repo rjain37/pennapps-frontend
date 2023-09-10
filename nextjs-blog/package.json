@@ -6,9 +6,9 @@
     "start": "next start"
   },
   "browser": {
-      "fs": false,
-      "path": false,
-      "os": false
+    "fs": false,
+    "path": false,
+    "os": false
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",

@@ -75,7 +75,7 @@ const App = () => {
 	fontFamily: "'Montserrat', sans-serif",
 	justifyContent: 'center'
   }}>
-	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome </h1>
+	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome to DataDaddy!</h1>
 	<div style={{ marginBottom: '15px' }}>
 	  <label
 		htmlFor="file-upload"
@@ -116,7 +116,7 @@ const App = () => {
 		<div className="input-area">
 		  <input
 			type="text"
-			placeholder="Type your message..."
+			placeholder="Enter your query..."
 			onKeyDown={(e) => {
 			  if (e.key === 'Enter') {
 				handleSendMessage(e.target.value);
