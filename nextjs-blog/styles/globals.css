@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p{
+  font-family: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.personMessage {
+  background-color: #a164e0;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  align-self: right;
+  word-wrap: break-word;
+  justify-content: right;
+  text-align: right;
+  font-family: 'Montserrat', sans-serif;
+  width: max-content;
+  position: relative;
+  margin-left: auto;
+}
+
+.botMessage {
+  background-color: #e0d7d7;
+  color: #333;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  align-self: left;
+  justify-content: left;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  width: max-content;
+  position: relative;
+}
+
+/* body {
+  background-color: #f2f2f2;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+} */
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "'Montserrat', sans-serif";
+  background-color: #333;
+  align-items: center;
+}
+
+input{
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Style the chatbox container */
+.chatbox {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 1200px;
+  max-width: 100%;
+  margin-bottom: 10px;
+
+}
+
+/* Style the input area */
+.input-area {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Style the input field */
+.input-area input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.messages {
+  width: 97.5%;
+  overflow: auto;
+}

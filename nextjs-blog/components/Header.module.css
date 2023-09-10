@@ -1,0 +1,10 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  width: 40px; /* Adjust the width as needed */
+  height: auto; /* To maintain the aspect ratio */
+}

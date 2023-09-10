@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Box with Metaphor API</title>
+</head>
+<body>
+    <h1>Chat Box with Metaphor API</h1>
+
+    <div id="chat-box">
+        <div id="chat-log"></div>
+        <input type="text" id="user-input" placeholder="Type a query...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <script>
+        const chatLog = document.getElementById('chat-log');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        function appendToChatLog(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            chatLog.appendChild(messageDiv);
+        }
+
+        sendButton.addEventListener('click', () => {
+            const userMessage = userInput.value.trim();
+            if (userMessage === '') return;
+
+            appendToChatLog(`User: ${userMessage}`);
+            userInput.value = '';
+
+            // Send user input to the backend
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user_input: userMessage }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display bot response in the chat log
+                data.bot_response.forEach(result => {
+                    appendToChatLog(`Bot: ${result.title} (${result.url})`);
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        });
+    </script>
+</body>
+</html>
