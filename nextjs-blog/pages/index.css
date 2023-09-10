@@ -1,14 +1,21 @@
 .personMessage {
-	background-color: #F0F0F0;
-	padding: 8px;
-	margin: 4px;
-	justify-content: right;
-  }
+  background-color: #0074e4;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  max-width: 70%;
+  align-self: flex-end;
+  word-wrap: break-word;
+}
 
 .botMessage {
-	background-color: #F0F0F0;
-	padding: 8px;
-	margin: 4px;
-	justify-content: left;
+  background-color: #F0F0F0;
+  color: #333;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  max-width: 70%;
+  align-self: flex-start;
+  word-wrap: break-word;
 }
-  
