@@ -75,7 +75,7 @@ const App = () => {
 	fontFamily: "'Montserrat', sans-serif",
 	justifyContent: 'center'
   }}>
-	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome to <img src="Logo.png" alt="Logo" /></h1>
+	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome to <img src="/images/DataLogo.png" alt="Logo"/></h1>
 	<div style={{ marginBottom: '15px' }}>
 	  <label
 		htmlFor="file-upload"
