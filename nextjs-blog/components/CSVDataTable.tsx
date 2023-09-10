@@ -6,7 +6,7 @@ const CSVDataTable = ({ data }) => {
   return (
     <>
       {data.length === 0 ? (
-        <p>No data available.</p>
+        <p style={font}>No data available.</p>
       ) : (
         <table style={tableStyle}>
           <thead>
@@ -48,7 +48,7 @@ const tableHeaderStyle = {
   fontWeight: 500,
   fontFamily: "'Montserrat', sans-serif",
   color: "#ffffff",
-  backgroundColor: "#6D95E0",
+  backgroundColor: "#a164e0",
   borderBottom: "1px solid #ddd",
   padding: "15px",
   textAlign: "left",
@@ -63,6 +63,10 @@ const tableCellStyle = {
   borderRight: "1px solid #ddd",
   padding: "15px",
   backgroundColor: "#fff",
+};
+
+const font = {
+  fontFamily: "'Montserrat', sans-serif",
 };
 
 export default CSVDataTable;

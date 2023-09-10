@@ -68,7 +68,7 @@ const App = () => {
   boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', 
   borderRadius: '10px',
   textAlign: 'center',
-  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  fontFamily: "'Montserrat', sans-serif"
 }}>
   <h1> Title </h1>
   <div style={{ marginBottom: '15px' }}>

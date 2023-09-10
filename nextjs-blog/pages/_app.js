@@ -68,25 +68,27 @@ const App = () => {
 	maxWidth: '1200px', 
 	margin: '0 auto', 
 	padding: '20px', 
-	backgroundColor: '#3CB043', 
+	backgroundColor: '#a181e0', 
 	boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', 
 	borderRadius: '10px',
 	textAlign: 'center',
-	fontFamily: "'Montserrat', sans-serif"
+	fontFamily: "'Montserrat', sans-serif",
+	justifyContent: 'center'
   }}>
-	<h1> Welcome </h1>
+	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome </h1>
 	<div style={{ marginBottom: '15px' }}>
 	  <label
 		htmlFor="file-upload"
 		style={{
 		  display: 'block',
 		  padding: '10px',
-		  backgroundColor: '#0074e4',
+		  backgroundColor: '#a164e0',
 		  color: 'white',
 		  border: '1px solid #ccc',
 		  borderRadius: '5px',
 		  cursor: 'pointer',
 		  transition: 'background-color 0.3s',
+		  fontFamily: "'Montserrat', sans-serif"
 		}}
 	  >
 		Choose File
@@ -103,7 +105,7 @@ const App = () => {
 	</div>
 	<CSVDataTable data={csvData} />
   
-	<div className="chatbox">
+	<center><div className="chatbox">
 		<div className="messages">
 		  {messages.map((message) => (
 			<div key={message.id} className={(message.bot ? "botMessage" : "personMessage")}>
@@ -123,7 +125,7 @@ const App = () => {
 			}}
 		  />
 		</div>
-	  </div>
+	  </div></center>
   </div>
   
 	);
