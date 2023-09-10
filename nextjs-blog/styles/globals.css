@@ -24,7 +24,7 @@ img {
   color: white;
   border-radius: 10px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px;
   align-self: right;
   word-wrap: break-word;
   justify-content: right;
@@ -32,6 +32,7 @@ img {
   font-family: 'Montserrat', sans-serif;
   width: max-content;
   position: relative;
+  margin-left: auto;
 }
 
 .botMessage {
@@ -39,7 +40,7 @@ img {
   color: #333;
   border-radius: 10px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px;
   align-self: left;
   justify-content: left;
   text-align: left;
@@ -78,6 +79,7 @@ input{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 1200px;
   max-width: 100%;
+  margin-bottom: 10px;
 
 }
 

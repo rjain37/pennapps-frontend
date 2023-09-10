@@ -82,7 +82,7 @@ const App = () => {
 		style={{
 		  display: 'block',
 		  padding: '10px',
-		  backgroundColor: '#a164e0',
+		  backgroundColor: '#D4EDDF',
 		  color: 'white',
 		  border: '1px solid #ccc',
 		  borderRadius: '5px',
