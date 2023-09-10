@@ -9,10 +9,23 @@ import CSVDataTable from "/components/CSVDataTable.tsx";
 import '../styles/globals.css';
 
 const App = () => {
+	const BACKEND_URL = "http://10.251.158.187:8000/";
+
 	const [csvData, setCsvData] = useState([]);
 	const [messages, setMessages] = useState([{ id: 1, text: 'Hello! Welcome to the world of this personal, smart, and powerful data analysis tool!', bot: true }]);
 
 	const [userId, setUserId] = useState(null);
+
+	useEffect(() => {
+		fetch(`${BACKEND_URL}/`)
+			.then(response => response.json())
+			.then(data => {
+				console.log(data); // Log the parsed data.
+			})
+			.catch(error => {
+				console.error("Error fetching data:", error);
+			});
+	}, []); // The empty array ensures this effect runs only once when the component mounts.
 
 	useEffect(() => {
 		// Check if a user_id cookie is already set
@@ -21,7 +34,7 @@ const App = () => {
 		// If not, generate a new UUID and set it as a cookie
 		if (!currentUserId) {
 			currentUserId = uuidv4();
-			Cookies.set('user_id', currentUserId, {expires: 30}); // expires in 30 days
+			Cookies.set('user_id', currentUserId, { expires: 30, sameSite: 'None'});
 		}
 		setUserId(currentUserId);
 	}, []); // empty array as second argument so it only runs once
