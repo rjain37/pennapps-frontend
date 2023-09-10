@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import csv from 'csv-parser';
 
 export default async (req, res) => {
   try {

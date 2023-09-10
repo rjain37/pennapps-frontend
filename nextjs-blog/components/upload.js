@@ -1,5 +1,4 @@
 import formidable from 'formidable';
-import csv from 'csv-parser';
 
 export const config = {
   api: {
