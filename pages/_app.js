@@ -1,5 +1,6 @@
 // pages/_app.js
 import React, {useEffect, useState} from "react";
+import Image from 'next/image';
 
 import {v4 as uuidv4} from 'uuid';
 import Cookies from 'js-cookie';
@@ -18,7 +19,6 @@ const App = () => {
 	const [csvData, setCsvData] = useState([]);
 	const [messages, setMessages] = useState([{ id: 1, text: 'Hello! Welcome to the world of this personal, smart, and powerful data analysis tool!', bot: true }]);
     const [showImages, setShowImages] = useState(false);
-
 	const [userId, setUserId] = useState(null);
 
 	useEffect(() => {
@@ -141,6 +141,8 @@ const App = () => {
 		const newMessage = { id: messages.length + 1, text, bot: true };
 		setMessages([...messages, newMessage]);
 	};
+
+	var classname = showImages ? '' : 'hidden';
 
 	return (
   <div style={{
