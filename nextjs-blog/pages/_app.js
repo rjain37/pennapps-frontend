@@ -75,7 +75,7 @@ const App = () => {
 	fontFamily: "'Montserrat', sans-serif",
 	justifyContent: 'center'
   }}>
-	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome to DataDaddy!</h1>
+	<h1 style={{ fontFamily: "'Montserrat', sans-serif" }}> Welcome to <img src="Logo.png" alt="Logo" /></h1>
 	<div style={{ marginBottom: '15px' }}>
 	  <label
 		htmlFor="file-upload"
@@ -83,7 +83,7 @@ const App = () => {
 		  display: 'block',
 		  padding: '10px',
 		  backgroundColor: '#D4EDDF',
-		  color: 'white',
+		  color: 'black',
 		  border: '1px solid #ccc',
 		  borderRadius: '5px',
 		  cursor: 'pointer',
@@ -91,7 +91,7 @@ const App = () => {
 		  fontFamily: "'Montserrat', sans-serif"
 		}}
 	  >
-		Choose File
+		Choose Files
 	  </label>
 	  <input 
 		type="file" 
